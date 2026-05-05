@@ -28,7 +28,7 @@ def get_pr_files():
         return []
 
 def run_ai_review():
-    client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+    client = genai.Client(api_key=os.getenv('AIzaSyBI13P_FUcC9kFa4mf0IAJShr5aMf0MWeg'))
     files = get_pr_files()
     review_results = []
 

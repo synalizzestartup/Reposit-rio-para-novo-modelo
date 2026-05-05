@@ -1,0 +1,41 @@
+name: Release Announcement
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare Release Data
+        run: |
+          echo "VERSION=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
+
+          echo "BODY<<EOF" >> $GITHUB_ENV
+          echo "${{ github.event.release.body }}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "🚀 Nova Release: ${{ env.VERSION }}"
+          to: "joao.eberts@limbersoftware.com.br, anderson.zamboni@limbersoftware.com.br, gustavo.zanotto@limbersoftware.com.br, joao.dengo@limbersoftware.com.br"
+          from: "Robot Bot <${{ secrets.MAIL_USERNAME }}>"
+          secure: true
+          body: |
+            Olá time,
+            
+            Uma nova versão foi publicada no repositório!
+            
+            Versão: ${{ env.VERSION }}
+            
+            Detalhes da Release:
+            ${{ env.BODY }}
+            
+            Confira em: ${{ github.event.release.html_url }}

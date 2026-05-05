@@ -1,0 +1,48 @@
+name: 🤖 AI Full Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**/*.robot'
+      - '**/*.py'
+      - '**/*.txt'
+  workflow_dispatch:
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write  
+      contents: read
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip uninstall google-generativeai -y
+          pip install google-genai requests
+
+      - name: 🚀 Run AI Review Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python scripts/ai_code_review.py
+
+      - name: 💬 Post Review Comment
+        if: success()
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          filePath: review_report.md
+          comment_tag: ai-code-review

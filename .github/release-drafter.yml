@@ -1,0 +1,43 @@
+name-template: '🚀 Versão $RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+
+version-resolver:
+  major:
+    labels: ['major', 'breaking-change']
+  minor:
+    labels: ['feat', 'feature']
+  patch:
+    labels: ['fix', 'bug', 'test']
+  default: patch
+
+categories:
+  - title: '🧪 Testes & Automação Robot'
+    labels:
+      - 'test'
+  - title: '🚀 Novas Funcionalidades'
+    labels:
+      - 'feat'
+      - 'feature'
+  - title: '🐛 Correções de Bugs'
+    labels:
+      - 'fix'
+      - 'bug'
+  - title: '📖 Documentação'
+    labels:
+      - 'docs'
+  - title: '⚙️ Manutenção & Dependências'
+    labels:
+      - 'chore'
+      - 'dependencies'
+
+change-template: '- $TITLE (por @$AUTHOR) em [#$NUMBER] (https://github.com/GustavoZanotto-Limber/Robot-Framework/pull/$NUMBER)'
+
+template: |
+  ## 📝 O que há de novo na $RESOLVED_VERSION?
+
+  $CHANGES
+
+  ---
+  **Dica para os DEVs:** Esta release foi gerada automaticamente. Para detalhes técnicos, consulte o histórico de commits abaixo.
+  
+  **Full Changelog**: https://github.com/GustavoZanotto-Limber/Robot-Framework/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION

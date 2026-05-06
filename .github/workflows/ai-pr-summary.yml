@@ -109,7 +109,7 @@ jobs:
 
       - name: Post Comment
         env:
-          TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ github.token }}
         run: |
           PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           COMMENT_BODY=$(cat summary.md)

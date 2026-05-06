@@ -30,7 +30,7 @@ categories:
       - 'chore'
       - 'dependencies'
 
-change-template: '- $TITLE (por @$AUTHOR) em [#$NUMBER] (https://github.com/GustavoZanotto-Limber/Robot-Framework/pull/$NUMBER)'
+change-template: '- $TITLE (por @$AUTHOR) em [#$NUMBER] (https://github.com/synalizzestartup/Reposit-rio-para-novo-modelo/pull/$NUMBER)'
 
 template: |
   ## 📝 O que há de novo na $RESOLVED_VERSION?
@@ -40,4 +40,4 @@ template: |
   ---
   **Dica para os DEVs:** Esta release foi gerada automaticamente. Para detalhes técnicos, consulte o histórico de commits abaixo.
   
-  **Full Changelog**: https://github.com/GustavoZanotto-Limber/Robot-Framework/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+  **Full Changelog**: https://github.com/synalizzestartup/Reposit-rio-para-novo-modelo/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION

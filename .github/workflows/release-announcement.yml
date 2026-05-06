@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "🚀 Nova Release: ${{ env.VERSION }}"
-          to: "joao.eberts@limbersoftware.com.br, anderson.zamboni@limbersoftware.com.br, gustavo.zanotto@limbersoftware.com.br, joao.dengo@limbersoftware.com.br"
+          to: "gustavozanotto119@gmail.com, "
           from: "Robot Bot <${{ secrets.MAIL_USERNAME }}>"
           secure: true
           body: |

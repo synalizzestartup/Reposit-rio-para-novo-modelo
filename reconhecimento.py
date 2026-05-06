@@ -19,6 +19,7 @@ try:
 except FileNotFoundError:
     print("Erro: Arquivos de modelo não encontrados. Execute 'treinamento.py' primeiro.")
     exit()
+    #Teste do PR e do Code Review
     
 
 print("Modelo carregado com sucesso!")

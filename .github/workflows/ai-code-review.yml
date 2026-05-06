@@ -36,7 +36,7 @@ jobs:
       - name: 🚀 Run AI Review Script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          DRAFTER_TOKEN: ${{ secrets.DRAFTER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: python scripts/ai_code_review.py
 

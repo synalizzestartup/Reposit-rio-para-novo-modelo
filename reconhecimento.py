@@ -19,8 +19,7 @@ try:
 except FileNotFoundError:
     print("Erro: Arquivos de modelo não encontrados. Execute 'treinamento.py' primeiro.")
     exit()
-    #Teste do PR e do Code Review
-    
+    #Teste de PR para a IA gerar um sumário do que foi alterado no código, focando em inconsistências de sintaxe, uso de keywords e estrutura.    
 
 print("Modelo carregado com sucesso!")
 

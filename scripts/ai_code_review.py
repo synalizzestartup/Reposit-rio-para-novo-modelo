@@ -37,20 +37,18 @@ def run_ai_review():
         
         filename = file.get('filename', '')
         status = file.get('status', 'alterado')
-        # O 'patch' é onde o GitHub guarda o diff das linhas alteradas
         diff_patch = file.get('patch', '') 
 
         if not (filename.endswith('.robot') or filename.endswith('.py')) or not diff_patch:
             continue
 
-        # Tentamos ler o arquivo completo para dar contexto, mas focamos no DIFF
         full_content = ""
         if os.path.exists(filename):
             with open(filename, 'r', encoding='utf-8') as f:
                 full_content = f.read()
 
         prompt = f"""
-        Você é um Engenheiro de QA Sênior. Analise as alterações (DIFF) abaixo.
+        Faça uma análise das com um alto nivel técnico as alterações (DIFF) abaixo, este projet é um sistema de validação de libras .
         Arquivo: {filename}
         Status: {status}
 

@@ -45,7 +45,7 @@ jobs:
               with open('pr_diff.txt', 'r') as f:
                   diff_text = f.read()[:15000]
 
-              prompt = f"""Você é um Engenheiro de QA Sênior especializado em Robot Framework e Clean Code.
+              prompt = f"""Faça um sumario de pull request como se você fosse um Sênior em Clean Code, o projeto é sobre validação de libras com o uso de inteligencias artificiais.
                           Sua tarefa é analisar o DIFF de código fornecido e gerar um resumo técnico detalhado para um Pull Request.
                           Em cenários que houve a mesma alteraçao para diversas partes do código compacte essas alterações em um único item, evitando repetições desnecessárias. 
                           Use o seguinte formato de resposta:

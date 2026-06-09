@@ -22,14 +22,14 @@ def extrair_features(hand_landmarks):
     Converte os landmarks da mão em uma lista simples de coordenadas normalizadas.
     """
     features = []
-    pulso_x = hand_landmarks[0].x
-    pulso_y = hand_landmarks[0].y
 
     for i in range(NUM_LANDMARKS):
         landmark_x = hand_landmarks[i].x
         landmark_y = hand_landmarks[i].y
-        features.append(landmark_x - pulso_x)
-        features.append(landmark_y - pulso_y)
+        landmark_z = hand_landmarks[i].z
+        features.append(landmark_x)
+        features.append(landmark_y)
+        features.append(landmark_z)
 
     return features
 
@@ -37,18 +37,28 @@ def salvar_dados(dados, nome_arquivo):
     """
     Salva a lista de dados em um arquivo CSV.
     """
+    expected_header = []
+    for i in range(NUM_LANDMARKS):
+        expected_header += [f'x{i}', f'y{i}', f'z{i}']
+    expected_header.append('label')
+
     file_exists = os.path.isfile(nome_arquivo)
+    if file_exists:
+        with open(nome_arquivo, 'r', newline='') as f:
+            reader = csv.reader(f)
+            existing_header = next(reader, None)
+        if existing_header != expected_header:
+            backup_name = nome_arquivo.replace('.csv', '_old.csv')
+            os.replace(nome_arquivo, backup_name)
+            print(f"Arquivo antigo renomeado para '{backup_name}' porque o cabeçalho estava incompatível.")
+            file_exists = False
+
     with open(nome_arquivo, 'a', newline='') as f:
         writer = csv.writer(f)
         if not file_exists:
-            header = []
-            for i in range(NUM_LANDMARKS):
-                header += [f'x{i}', f'y{i}']
-            header.append('label')
-            writer.writerow(header)
-        
-        # Escreve os dados
+            writer.writerow(expected_header)
         writer.writerows(dados)
+
     print(f"\n{len(dados)} amostras salvas em '{nome_arquivo}'!")
 
 # --- Coleta de Dados ---

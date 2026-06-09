@@ -9,7 +9,7 @@ import numpy as np
 MODEL_PATH = "C:\\Users\\Gustavo\\Desktop\\Synalizze - Sem Site\\Maos\\modelo_gestos.pkl"
 LABEL_ENCODER_PATH = "C:\\Users\\Gustavo\\Desktop\\Synalizze - Sem Site\\Maos\\label_encoder.pkl"
 NUM_LANDMARKS = 21
-
+#teste alek
 print("Carregando modelo...")
 try:
     with open(MODEL_PATH, 'rb') as f:
@@ -19,8 +19,7 @@ try:
 except FileNotFoundError:
     print("Erro: Arquivos de modelo não encontrados. Execute 'treinamento.py' primeiro.")
     exit()
-    #Teste do PR e do Code Review
-    
+    #Teste de PR para a IA gerar um sumário do que foi alterado no código, focando em inconsistências de sintaxe, uso de keywords e estrutura.    
 
 print("Modelo carregado com sucesso!")
 

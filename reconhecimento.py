@@ -9,7 +9,7 @@ import numpy as np
 MODEL_PATH = "C:\\Users\\Gustavo\\Desktop\\Synalizze - Sem Site\\Maos\\modelo_gestos.pkl"
 LABEL_ENCODER_PATH = "C:\\Users\\Gustavo\\Desktop\\Synalizze - Sem Site\\Maos\\label_encoder.pkl"
 NUM_LANDMARKS = 21
-#Troce de comentario
+
 print("Carregando modelo...")
 try:
     with open(MODEL_PATH, 'rb') as f:
